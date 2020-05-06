@@ -33,6 +33,7 @@ export const NavItem = styled.div`
   padding: 0px 15px;
   font-size: 17px;
   color: #333333;
+  cursor: pointer;
   &.left {
     float: left;
   }
@@ -110,6 +111,7 @@ export const SearchInfo = styled.div`
   width: 240px;
   padding: 0 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
 `
 
 export const SerachInfoTitle = styled.div`
@@ -169,8 +171,12 @@ export const Button = styled.div`
   border-radius: 19px;
   border: 1px solid #ec6149;
   font-size: 14px;
+  cursor: pointer;
   &.reg {
     color: #ec6149;
+  }
+  &.reg:hover {
+    background: #eeeeee;
   }
   &.writing {
     background: #ec6149;

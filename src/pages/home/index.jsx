@@ -16,7 +16,7 @@ export default class Hemo extends Component {
         <HomeLeft>
           <img
             className="banner-image"
-            src="https://upload-images.jianshu.io/upload_images/1202579-b6e17367e11cdc3b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+            src="https://upload.jianshu.io/admin_banners/web_images/4942/f7e1fedab8f5e44e62700ceb873a2d0d71d25140.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
             alt=""
           />
           <Topic/>

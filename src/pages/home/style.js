@@ -27,6 +27,7 @@ export const TopicWrapper = styled.div`
   overflow: hidden;
   margin-left: -18px;
   padding: 20px 0 10px 0;
+  border-bottom: 1px solid #dcdcdc;
 `;
 
 export const TopicItem = styled.div`
@@ -60,5 +61,59 @@ export const More = styled.div`
   cursor: pointer;
   &:hover {
     color: #000000;
+  }
+`;
+
+export const ListItem = styled.div`
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+  .pic {
+    display: block;
+    float: right;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+`;
+
+export const ListInfo = styled.div`
+  float: left;
+  padding-right: 20px;
+  .title {
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
+  }
+  .title:hover {
+    text-decoration: underline;
+  }
+  .desc {
+    line-height: 24px;
+    font-size: 13px;
+    color: #999999;
+  }
+`;
+
+export const ListComment = styled.div`
+  float: left;
+  margin-top: 10px;
+`;
+
+export const ListCommentItem = styled.span`
+  margin-right: 10px;
+  font-size: 12px;
+  color: #b4b4b4b4;
+  cursor: pointer;
+  &:hover {
+    color: #777777;
+  }
+  .icon {
+    font-size: 12px;
+  }
+  &.red {
+    color: #ea6f5a;
   }
 `;

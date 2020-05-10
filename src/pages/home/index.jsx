@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import Topic from "./components/Topic";
 import List from "./components/List";
 import Recommend from "./components/Recommend";
 import Writer from "./components/Writer";
+import { actionCreators } from "./store";
+
 import {
   HomeWrapper,
   HomeLeft,
   HomeRight
 } from "./style";
 
-export default class Hemo extends Component {
+class Hemo extends Component {
   render() {
     return (
       <HomeWrapper>
@@ -30,4 +33,19 @@ export default class Hemo extends Component {
       </HomeWrapper>
     )
   }
+
+  componentDidMount() {
+    this.props.changeHomeData();
+  }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeHomeData() {
+      const action = actionCreators.getHomeInfo();
+      dispatch(action);
+    },
+  }
+}
+
+export default connect(null ,mapDispatchToProps)(Hemo);

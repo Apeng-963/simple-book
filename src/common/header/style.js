@@ -3,11 +3,12 @@ import logoPic from "./../../statics/logo.png";
 
 export const HeaderWrapper = styled.div` /*div标签*/
   position: relative;
+  z-index: 1;
   height: 58px;
   border-bottom: 1px solid #f0f0f0;
 `;
 
-export const Logo = styled.a.attrs({  //添加属性
+export const Logo = styled.div.attrs({  //添加属性
   href: "/"
 })`
   position: absolute;

@@ -1,44 +1,50 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { actionCreators } from "./../store";
 import {
   ListItem,
   ListInfo,
   ListComment,
-  ListCommentItem
+  ListCommentItem,
+  LoadMore
 } from "./../style";
 
-class List extends Component {
+class List extends PureComponent {
   render() {
-    const { list } = this.props;
+    const { list, getMoreList, page } = this.props;
     return (
       <Fragment>
         {
-          list.map(item => {
+          list.map((item, index) => {
             return (
-              <ListItem key={item.get("id")}>
-                {item.get("imgUrl")? <img className="pic" src={item.get("imgUrl")} alt=""/>: null}
-                <ListInfo style={item.get("imgUrl")? {width: "455px"}: {}}>
-                  <h3 className="title">{item.get("title")}</h3>
-                  <p className="desc">{item.get("desc")}</p>
-                </ListInfo>
-                <ListComment>
-                  <ListCommentItem className="red">
-                    <span className="iconfont icon">&#xe679;</span> {item.get("browse")}
-                  </ListCommentItem>
-                  <ListCommentItem>
-                    {item.get("author")}
-                  </ListCommentItem>
-                  <ListCommentItem>
-                    <span className="iconfont icon">&#xe6cd;</span> {item.get("comment")}
-                  </ListCommentItem>
-                  <ListCommentItem>
-                    <span className="iconfont icon">&#xe65c;</span> {item.get("like")}
-                  </ListCommentItem>
-                </ListComment>
-              </ListItem>
+              <Link key={index} to={'/detail/id=' + item.get('id')}>
+                <ListItem>
+                  {item.get("imgUrl")? <img className="pic" src={item.get("imgUrl")} alt=""/>: null}
+                  <ListInfo style={item.get("imgUrl")? {width: "455px"}: {}}>
+                    <h3 className="title">{item.get("title")}</h3>
+                    <p className="desc">{item.get("desc")}</p>
+                  </ListInfo>
+                  <ListComment>
+                    <ListCommentItem className="red">
+                      <span className="iconfont icon">&#xe679;</span> {item.get("browse")}
+                    </ListCommentItem>
+                    <ListCommentItem>
+                      {item.get("author")}
+                    </ListCommentItem>
+                    <ListCommentItem>
+                      <span className="iconfont icon">&#xe6cd;</span> {item.get("comment")}
+                    </ListCommentItem>
+                    <ListCommentItem>
+                      <span className="iconfont icon">&#xe65c;</span> {item.get("like")}
+                    </ListCommentItem>
+                  </ListComment>
+                </ListItem>
+              </Link>
             );
           })
         }
+        <LoadMore onClick={() => getMoreList(page)}>更多文字</LoadMore>
       </Fragment>
     )
   }
@@ -46,8 +52,17 @@ class List extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(["home", "articleList"])
+    list: state.getIn(["home", "articleList"]),
+    page: state.getIn(["home", "articlePage"])
   }
 }
 
-export default connect(mapStateToProps)(List);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMoreList(page) {
+      dispatch(actionCreators.getMoreList(page))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
